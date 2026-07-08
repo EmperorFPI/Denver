@@ -1,0 +1,13 @@
+{
+  "name": "denvermobilenotaryservice",
+  "version": "1.0.0",
+  "description": "Lead-gen static site for denvermobilenotaryservice.com — Eleventy 3.x on Cloudflare Pages, GHL-integrated.",
+  "type": "module",
+  "scripts": {
+    "build": "eleventy",
+    "dev": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

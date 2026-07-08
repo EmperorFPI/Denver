@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  {%- if noindex %}<meta name="robots" content="noindex,follow">{% endif %}
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Zilla+Slab:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+
+  {#- Organization / LocalBusiness schema on every page #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LegalServices", "GovernmentService"],
+    "@id": "{{ site.url }}/#business",
+    "name": "{{ site.name }}",
+    "url": "{{ site.url }}/",
+    "telephone": "{{ site.phoneHref }}",
+    "email": "{{ site.email }}",
+    "description": "Mobile notary public serving the Denver metro. A commissioned Colorado notary travels to your home, office, hospital, or care facility. Remote online notarization and apostille assistance available.",
+    "areaServed": [
+      {%- for city in site.serviceAreas %}
+      { "@type": "City", "name": "{{ city }}", "containedInPlace": { "@type": "State", "name": "Colorado" } }{% if not loop.last %},{% endif %}
+      {%- endfor %}
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "{{ site.address.locality }}",
+      "addressRegion": "{{ site.address.region }}",
+      "addressCountry": "{{ site.address.country }}"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": {{ site.geo.lat }}, "longitude": {{ site.geo.lng }} },
+    "priceRange": "{{ site.priceRange }}",
+    "openingHours": "Mo-Su 07:00-21:00",
+    "serviceType": "Mobile Notary Service"
+  }
+  </script>
+
+  {% block schema %}{% endblock %}
+
+  {#- Google Ads / gtag — replace placeholders, then uncomment.
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.gtagId }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.gtagId }}');
+  </script>
+  #}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <svg class="brand-seal" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="1"/><path d="M20 10l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9z" fill="currentColor"/></svg>
+        <span class="brand-text"><strong>Denver</strong> Mobile Notary Service</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/services/">Services</a>
+        <a href="/service-areas/">Service Areas</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+      </nav>
+      <a class="btn btn-gold header-cta" href="tel:{{ site.phoneHref }}">Call {{ site.phone }}</a>
+    </div>
+  </header>
+
+  <main id="main">
+    {% block content %}{{ content | safe }}{% endblock %}
+  </main>
+
+  <section class="cta-band">
+    <div class="container cta-band-inner">
+      <div>
+        <h2>Need a document notarized today?</h2>
+        <p>A commissioned Colorado notary comes to you — home, office, hospital, or anywhere in the Denver metro. {{ site.hours }}.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a class="btn btn-gold" href="tel:{{ site.phoneHref }}">Call {{ site.phone }}</a>
+        <a class="btn btn-outline-light" href="/#book">Request an appointment</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-brand">{{ site.name }}</p>
+        <p>Mobile notary dispatch for the Denver metro. Every appointment is handled by a commissioned, background-screened Colorado notary public.</p>
+        <p><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a><br><a href="mailto:{{ site.email }}">{{ site.email }}</a><br>{{ site.hours }}</p>
+      </div>
+      <div>
+        <p class="footer-heading">Services</p>
+        <ul>
+          <li><a href="/services/mobile-notary/">Mobile Notary</a></li>
+          <li><a href="/services/remote-online-notarization/">Remote Online Notarization</a></li>
+          <li><a href="/services/apostille/">Apostille Assistance</a></li>
+          <li><a href="/services/loan-signing/">Loan Signing</a></li>
+          <li><a href="/services/hospital-jail-notary/">Hospital &amp; Facility Visits</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Service areas</p>
+        <ul class="footer-areas">
+          {%- for a in collections.areas %}
+          <li><a href="{{ a.url }}">{{ a.data.short_title or a.data.title }}</a></li>
+          {%- endfor %}
+          <li><a href="/service-areas/">All areas →</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Good to know</p>
+        <ul>
+          <li><a href="/pricing/">Pricing &amp; Colorado fee caps</a></li>
+          <li><a href="/faq/">Frequently asked questions</a></li>
+        </ul>
+        <p class="footer-fineprint">Colorado caps the notarial act fee at ${{ site.fees.perActInPerson }} per document in person and ${{ site.fees.perActRon }} for remote online notarization. Travel is billed separately and quoted before we book. We are not attorneys and cannot give legal advice. Do not sign documents before your appointment — signatures generally must be made in the notary's presence.</p>
+        <p class="footer-fineprint">© {% year %} {{ site.legalName }}. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-call-bar">
+    <a class="btn btn-gold" href="tel:{{ site.phoneHref }}">📞 Call now</a>
+    <a class="btn btn-navy" href="/#book">Book online</a>
+  </div>
+
+  <script src="/js/lead.js" defer></script>
+</body>
+</html>

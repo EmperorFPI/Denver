@@ -1,0 +1,25 @@
+{
+  "name": "Denver Mobile Notary Service",
+  "legalName": "Denver Mobile Notary Service, a DBA of NotaryPro LLC",
+  "url": "https://denvermobilenotaryservice.com",
+  "phone": "(720) 555-0134",
+  "phoneHref": "+17205550134",
+  "email": "book@denvermobilenotaryservice.com",
+  "hours": "7:00 AM – 9:00 PM, 7 days a week",
+  "priceRange": "$$",
+  "geo": { "lat": 39.7392, "lng": -104.9903 },
+  "address": { "locality": "Denver", "region": "CO", "country": "US" },
+  "fees": {
+    "perActInPerson": 15,
+    "perActRon": 25,
+    "typicalVisitLow": 45,
+    "typicalVisitHigh": 95
+  },
+  "gtagId": "{{GTAG_ID}}",
+  "gtagConversionLabel": "{{GTAG_CONVERSION_LABEL}}",
+  "serviceAreas": [
+    "Denver", "Aurora", "Lakewood", "Arvada", "Westminster", "Thornton",
+    "Centennial", "Littleton", "Highlands Ranch", "Englewood", "Wheat Ridge",
+    "Commerce City", "Broomfield", "Parker", "Golden"
+  ]
+}

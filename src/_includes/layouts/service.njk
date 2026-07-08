@@ -1,0 +1,81 @@
+{% extends "layouts/base.njk" %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "{{ service_name }}",
+  "serviceType": "{{ service_type }}",
+  "provider": { "@id": "{{ site.url }}/#business" },
+  "areaServed": { "@type": "City", "name": "Denver", "containedInPlace": { "@type": "State", "name": "Colorado" } },
+  "description": "{{ description }}",
+  "url": "{{ site.url }}{{ page.url }}"
+}
+</script>
+{%- if faqs %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for f in faqs %}
+    { "@type": "Question", "name": {{ f.q | jsonify | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | jsonify | safe }} } }{% if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}
+</script>
+{%- endif %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": "{{ site.url }}/services/" },
+    { "@type": "ListItem", "position": 3, "name": "{{ short_title }}", "item": "{{ site.url }}{{ page.url }}" }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/services/">Services</a> / <span>{{ short_title }}</span></nav>
+    <h1>{{ h1 }}</h1>
+    <p class="lede">{{ lede }}</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="tel:{{ site.phoneHref }}">Call {{ site.phone }}</a>
+      <a class="btn btn-navy" href="/#book">Request an appointment</a>
+    </div>
+  </div>
+</section>
+
+<article class="container service-body">
+  {{ content | safe }}
+</article>
+
+{%- if faqs %}
+<section class="container faq">
+  <h2>Frequently asked questions</h2>
+  {%- for f in faqs %}
+  <details class="faq-item">
+    <summary>{{ f.q }}</summary>
+    <p>{{ f.a }}</p>
+  </details>
+  {%- endfor %}
+</section>
+{%- endif %}
+
+{%- if related_services %}
+<section class="container related-services">
+  <h2>Related services</h2>
+  <div class="card-grid">
+    {%- for r in related_services %}
+    <a class="card" href="{{ r.url }}"><h3>{{ r.name }}</h3><p>{{ r.blurb }}</p></a>
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+{% endblock %}

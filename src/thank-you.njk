@@ -1,0 +1,25 @@
+---
+layout: layouts/base.njk
+title: "Request Received — Denver Mobile Notary Service"
+description: "Your appointment request is in. We'll confirm by phone or text shortly."
+permalink: "/thank-you/"
+noindex: true
+---
+{% block content %}
+<section class="page-hero">
+  <div class="container" style="text-align:center; padding: 3rem 1.25rem;">
+    <svg viewBox="0 0 40 40" width="72" height="72" aria-hidden="true" style="color: var(--gold);"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 20.5l5.5 5.5L28 15" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h1>Request received.</h1>
+    <p class="lede" style="margin: 0 auto; max-width: 34em;">We'll confirm your appointment by phone or text shortly — usually within minutes during business hours. Need it faster? Call us directly.</p>
+    <div class="hero-actions" style="justify-content: center;">
+      <a class="btn btn-gold" href="tel:{{ site.phoneHref }}">Call {{ site.phone }}</a>
+    </div>
+    <p style="color: var(--slate); margin-top: 2rem; font-size: 0.95rem;">While you wait: <strong>don't sign your document</strong> — signatures happen in the notary's presence — and make sure every signer's photo ID is current and on hand.</p>
+  </div>
+</section>
+{#- Google Ads conversion — replace placeholders and uncomment once gtag is live in base.njk
+<script>
+  gtag('event', 'conversion', { 'send_to': '{{ site.gtagId }}/{{ site.gtagConversionLabel }}' });
+</script>
+#}
+{% endblock %}

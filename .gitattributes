@@ -1,0 +1,2 @@
+# Normalize line endings to LF in the repo (builds run on Linux at Cloudflare).
+* text=auto eol=lf

@@ -1,0 +1,66 @@
+<div class="lead-card" id="book">
+  <div class="lead-card-head">
+    <p class="lead-card-eyebrow">Request an appointment</p>
+    <p class="lead-card-sub">Tell us what you need — we confirm by phone or text, usually within minutes during business hours.</p>
+  </div>
+  <form id="lead-form" method="POST" action="/api/lead" novalidate>
+    <div class="field-row">
+      <div class="field">
+        <label for="lf-name">Full name</label>
+        <input type="text" id="lf-name" name="full_name" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="lf-phone">Mobile phone</label>
+        <input type="tel" id="lf-phone" name="phone" autocomplete="tel" inputmode="tel" required>
+      </div>
+    </div>
+    <div class="field">
+      <label for="lf-email">Email</label>
+      <input type="email" id="lf-email" name="email" autocomplete="email" required>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="lf-service">What do you need?</label>
+        <select id="lf-service" name="service_type" required>
+          <option value="">Select…</option>
+          <option>Mobile notary — general documents</option>
+          <option>Remote online notarization (RON)</option>
+          <option>Loan signing / real estate closing</option>
+          <option>Apostille assistance</option>
+          <option>Hospital, care facility, or jail visit</option>
+          <option>Not sure — help me figure it out</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="lf-city">City / ZIP</label>
+        <input type="text" id="lf-city" name="city" placeholder="e.g. Denver 80211" required>
+      </div>
+    </div>
+    <div class="field">
+      <label for="lf-when">When do you need it?</label>
+      <select id="lf-when" name="timeframe">
+        <option>Today</option>
+        <option>Tomorrow</option>
+        <option>This week</option>
+        <option>Just getting a quote</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="lf-notes">Anything we should know? <span class="optional">(optional)</span></label>
+      <textarea id="lf-notes" name="notes" rows="2" placeholder="Document type, number of signers, special access instructions…"></textarea>
+    </div>
+
+    {# Honeypot — hidden from humans, bots fill it #}
+    <div class="hp-field" aria-hidden="true">
+      <label for="lf-website">Company website</label>
+      <input type="text" id="lf-website" name="company_website" tabindex="-1" autocomplete="off">
+    </div>
+
+    {# Attribution — populated by /js/lead.js #}
+    <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="gclid"><input type="hidden" name="landing_page"><input type="hidden" name="referrer">
+
+    <button type="submit" class="btn btn-gold btn-block" data-label="Request my appointment">Request my appointment</button>
+    <p class="form-error" id="lead-form-error" hidden>Something went wrong sending your request. Please call us at <a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a> and we'll get you booked.</p>
+    <p class="lead-card-trust">Commissioned &middot; Background-screened &middot; E&amp;O insured. Payment is processed before the appointment — no surprises at the table.</p>
+  </form>
+</div>
