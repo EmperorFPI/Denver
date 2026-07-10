@@ -45,8 +45,8 @@ Foreign authorities can't verify a Colorado notary's commission on their own. Th
 
 ## Where we fit
 
-We're notaries, not the Secretary of State — the state issues the apostille itself. Our job is the step that most often goes wrong: executing the notarization so it sails through state review. We travel to you, notarize with correct Colorado certificate wording and a clean seal, and walk you through exactly how to submit to the Secretary of State — or point you to a full-service apostille courier if speed matters more than cost.
+We're notaries, not the Secretary of State — the state issues the apostille itself. Our job is the step that most often goes wrong: executing the notarization so it sails through state review. We travel to you, notarize with correct Colorado certificate wording and a clean seal, and walk you through exactly how to submit to the Secretary of State — or, if you'd rather not deal with any of it, hand the whole thing to us and we'll run it to the state and back for you.
 
 ## Pricing and turnaround
 
-You pay us the standard mobile notary pricing — Colorado's **$15-per-act cap plus disclosed travel**, typically **$45–$95 all-in** for a metro visit. The state's apostille fee and mailing costs are separate and paid to the Secretary of State. Budget several business days for state processing plus mail time, more for embassy legalization to non-Hague countries.
+Contact us for pricing. **Same-day expedited service available.**
