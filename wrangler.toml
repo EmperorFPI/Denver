@@ -1,0 +1,9 @@
+name = "denver"
+main = "worker/index.js"
+compatibility_date = "2024-11-01"
+
+# Serve the Eleventy build output as static assets. Requests that match a file
+# in _site are served directly; anything else falls through to worker/index.js.
+[assets]
+directory = "./_site"
+binding = "ASSETS"

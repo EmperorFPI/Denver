@@ -1,3 +1,7 @@
 node_modules/
 _site/
 .DS_Store
+
+# Wrangler local secrets + state
+.dev.vars
+.wrangler/

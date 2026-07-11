@@ -1,0 +1,2 @@
+# Local-only secrets for `wrangler pages dev`. Do NOT commit real values.
+GHL_WEBHOOK_URL=https://your-webhook-url-here
