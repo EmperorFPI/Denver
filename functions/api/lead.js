@@ -24,7 +24,7 @@ export async function onRequestPost(context) {
   }
 
   // Minimal validation — the client validates too, but never trust the client.
-  const required = ["full_name", "phone", "email", "service_type", "city"];
+  const required = ["first_name", "last_name", "phone", "email", "service_type", "city"];
   for (const f of required) {
     if (!(form.get(f) || "").trim()) {
       return json({ ok: false, error: "missing_" + f }, 422);
@@ -37,14 +37,19 @@ export async function onRequestPost(context) {
     return json({ ok: false, error: "not_configured" }, 500);
   }
 
+  const firstName = (form.get("first_name") || "").trim();
+  const lastName = (form.get("last_name") || "").trim();
+
   const payload = {
-    full_name: form.get("full_name"),
+    first_name: firstName,
+    last_name: lastName,
     phone: form.get("phone"),
     email: form.get("email"),
     service_type: form.get("service_type"),
     city: form.get("city"),
     timeframe: form.get("timeframe") || "",
-    notes: form.get("notes") || "",
+    documents: form.get("documents") || "",
+    special_instructions: form.get("special_instructions") || "",
     utm_source: form.get("utm_source") || "",
     utm_medium: form.get("utm_medium") || "",
     utm_campaign: form.get("utm_campaign") || "",
