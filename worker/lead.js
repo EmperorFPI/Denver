@@ -23,7 +23,7 @@ export async function handleLead(request, env) {
   }
 
   // Minimal validation — the client validates too, but never trust the client.
-  const required = ["first_name", "last_name", "phone", "email", "service_type", "city"];
+  const required = ["first_name", "last_name", "phone", "email", "service_type", "zip"];
   for (const f of required) {
     if (!(form.get(f) || "").trim()) {
       return json({ ok: false, error: "missing_" + f }, 422);
@@ -45,7 +45,7 @@ export async function handleLead(request, env) {
     phone: form.get("phone"),
     email: form.get("email"),
     service_type: form.get("service_type"),
-    city: form.get("city"),
+    zip: form.get("zip"),
     timeframe: form.get("timeframe") || "",
     documents: form.get("documents") || "",
     special_instructions: form.get("special_instructions") || "",
