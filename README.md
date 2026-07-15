@@ -42,13 +42,13 @@ npm run build      # outputs to _site/
    curl -X POST 'https://services.leadconnectorhq.com/hooks/XXXX/webhook-trigger/YYYY' \
      -H 'Content-Type: application/json' \
      -d '{
-       "full_name": "Test Lead",
+       "first_name": "Test",
+       "last_name": "Lead",
        "phone": "+13035550100",
        "email": "test@example.com",
        "service_type": "Mobile notary — general documents",
-       "city": "Denver 80211",
-       "timeframe": "Today",
-       "notes": "Priming payload — includes every field the site sends",
+       "zip": "80211",
+       "documents": "Priming payload — includes every field the site sends",
        "utm_source": "google",
        "utm_medium": "cpc",
        "utm_campaign": "denver-mobile-notary",
