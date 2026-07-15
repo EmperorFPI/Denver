@@ -6,8 +6,14 @@ GHL sub-account.
 
 **This repo is the template for the city sites.** Anything site-specific lives in
 `eleventy.config.js` and `worker/index.js`; the form itself comes from the shared
-[`notary-lead-form`](https://www.npmjs.com/package/notary-lead-form) package, so a
+[`notary-lead-form`](https://github.com/EmperorFPI/notary-lead-form) package, so a
 form fix is a dependency bump rather than a copy-paste across repos.
+
+The package installs from its public GitHub repo, pinned by tag
+(`github:EmperorFPI/notary-lead-form#semver:^1.0.0`). Public and MIT on purpose:
+a site sold to a buyer keeps building with no account, token, or access to this
+org. If a buyer wants no dependency at all, `npx notary-lead-form eject` vendors
+the sources in and drops it.
 
 ## Stack
 
