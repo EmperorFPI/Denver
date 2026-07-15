@@ -1,37 +1,55 @@
 # denvermobilenotaryservice.com
 
-Lead-gen static site for the Denver city brand. Eleventy 3.x → GitHub → Cloudflare Pages, with lead capture proxied through a Pages Function into the Denver GHL sub-account.
+Lead-gen static site for the Denver city brand. Eleventy 3.x → Cloudflare Workers
+(static assets + a `/api/lead` handler), proxying lead capture into the Denver
+GHL sub-account.
+
+**This repo is the template for the city sites.** Anything site-specific lives in
+`eleventy.config.js` and `worker/index.js`; the form itself comes from the shared
+[`notary-lead-form`](https://www.npmjs.com/package/notary-lead-form) package, so a
+form fix is a dependency bump rather than a copy-paste across repos.
 
 ## Stack
 
 - **SSG:** Eleventy 3.x (ESM config), Nunjucks templates, markdown content
-- **Hosting:** Cloudflare Pages (auto-deploy on push to `main`)
-- **Lead pipeline:** form → `POST /api/lead` (Pages Function) → GHL inbound webhook (JSON)
-- **Attribution:** client JS persists UTM params + `gclid` in sessionStorage across the session; hidden fields carry them into the lead payload
+- **Hosting:** Cloudflare Workers with static assets (`wrangler deploy`).
+  Requires **wrangler 4+** — wrangler 3 silently ignores the `[assets]` block,
+  producing a Worker with no `env.ASSETS` binding and no static files.
+- **Lead pipeline:** form → `POST /api/lead` (Worker) → GHL inbound webhook (JSON)
+- **Attribution:** `/js/lead.js` persists UTM params + `gclid` in sessionStorage
+  across the session; hidden fields carry them into the lead payload
 
 ## Local development
 
 ```bash
 npm install
-npm run dev        # http://localhost:8080
+npm run dev        # http://localhost:8080 (Eleventy only)
+npm run dev:worker # Eleventy + wrangler dev, exercises /api/lead
 npm run build      # outputs to _site/
 ```
 
+Put the webhook in `.dev.vars` (gitignored) for local Worker runs — see
+`.dev.vars.example`.
+
 ## Deploy (first time)
 
-1. Create the private GitHub repo and push:
+1. Create the GitHub repo and push:
    ```bash
    git init && git add -A && git commit -m "Initial site"
    git branch -M main
    git remote add origin git@github.com:EmperorFPI/denvermobilenotaryservice.git
    git push -u origin main
    ```
-2. Cloudflare Pages → **Create project → Connect to Git** → select the repo.
-   - Build command: `npx @11ty/eleventy`
-   - Build output directory: `_site`
-3. **Settings → Environment variables** (Production *and* Preview):
-   - `GHL_WEBHOOK_URL` = the Denver sub-account inbound webhook URL (see below)
-4. **Custom domains** → add `denvermobilenotaryservice.com` and `www` (Cloudflare handles the cert). Set `www` → apex redirect in Bulk Redirects or a `_redirects` rule if desired.
+2. Set the webhook secret (never commit it — it ships to the browser if you do):
+   ```bash
+   wrangler secret put GHL_WEBHOOK_URL
+   ```
+3. Deploy:
+   ```bash
+   npm run deploy     # cleans _site, rebuilds, wrangler deploy
+   ```
+4. **Workers → the Worker → Settings → Domains & Routes** → add
+   `denvermobilenotaryservice.com` and `www`. Cloudflare handles the cert.
 
 ## GHL wiring (Denver sub-account)
 

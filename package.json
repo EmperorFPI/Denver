@@ -6,11 +6,15 @@
   "scripts": {
     "build": "eleventy",
     "dev": "eleventy --serve",
-    "dev:worker": "eleventy && wrangler dev",
-    "deploy": "eleventy && wrangler deploy"
+    "dev:worker": "npm run clean && eleventy && wrangler dev",
+    "deploy": "npm run clean && eleventy && wrangler deploy",
+    "clean": "node -e \"require('node:fs').rmSync('_site',{recursive:true,force:true})\""
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "wrangler": "^3.0.0"
+    "wrangler": "^4.111.0"
+  },
+  "dependencies": {
+    "notary-lead-form": "file:../notary-lead-form"
   }
 }

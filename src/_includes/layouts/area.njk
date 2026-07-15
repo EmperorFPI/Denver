@@ -57,7 +57,7 @@
     {{ content | safe }}
   </article>
   <aside class="area-aside">
-    {% include "partials/lead-form.njk" %}
+    {% leadForm { pageCity: area_name, pageState: "CO", pageType: "area" } %}
   </aside>
 </div>
 

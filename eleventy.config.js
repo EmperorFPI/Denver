@@ -1,7 +1,21 @@
+import leadForm from "notary-lead-form/eleventy";
+import site from "./src/_data/site.json" with { type: "json" };
+
 export default function (eleventyConfig) {
+  // Shared lead form: renders {% leadForm %} and serves /js/lead.js.
+  // Everything site-specific lives here, so this config is the only thing a
+  // new city site needs to change.
+  eleventyConfig.addPlugin(leadForm, {
+    zipPlaceholder: "80211",
+    phone: site.phone,
+    phoneHref: site.phoneHref,
+    trust:
+      "Commissioned &middot; Background-screened &middot; E&amp;O insured. " +
+      "Payment is processed before the appointment — no surprises at the table.",
+  });
+
   // Static passthrough
   eleventyConfig.addPassthroughCopy({ "src/css": "css" });
-  eleventyConfig.addPassthroughCopy({ "src/js": "js" });
   eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
   eleventyConfig.addPassthroughCopy({ "src/img": "img" });
