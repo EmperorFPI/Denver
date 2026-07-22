@@ -1,10 +1,10 @@
-# denvermobilenotaryservice.com
+# lasvegasmobilenotaryservices.com
 
-Lead-gen static site for the Denver city brand. Eleventy 3.x → Cloudflare Workers
-(static assets + a `/api/lead` handler), proxying lead capture into the Denver
+Lead-gen static site for the Las Vegas city brand. Eleventy 3.x → Cloudflare Workers
+(static assets + a `/api/lead` handler), proxying lead capture into the Las Vegas
 GHL sub-account.
 
-**This repo is the template for the city sites.** Anything site-specific lives in
+**This repo is a city site built from the shared template.** Anything site-specific lives in
 `eleventy.config.js` and `worker/index.js`; the form itself comes from the shared
 [`notary-lead-form`](https://github.com/EmperorFPI/notary-lead-form) package, so a
 form fix is a dependency bump rather than a copy-paste across repos.
@@ -43,7 +43,7 @@ Put the webhook in `.dev.vars` (gitignored) for local Worker runs — see
    ```bash
    git init && git add -A && git commit -m "Initial site"
    git branch -M main
-   git remote add origin git@github.com:EmperorFPI/denvermobilenotaryservice.git
+   git remote add origin git@github.com:EmperorFPI/lasvegasmobilenotaryservices.git
    git push -u origin main
    ```
 2. Set the webhook secret (never commit it — it ships to the browser if you do):
@@ -55,11 +55,11 @@ Put the webhook in `.dev.vars` (gitignored) for local Worker runs — see
    npm run deploy     # cleans _site, rebuilds, wrangler deploy
    ```
 4. **Workers → the Worker → Settings → Domains & Routes** → add
-   `denvermobilenotaryservice.com` and `www`. Cloudflare handles the cert.
+   `lasvegasmobilenotaryservices.com` and `www`. Cloudflare handles the cert.
 
-## GHL wiring (Denver sub-account)
+## GHL wiring (Las Vegas sub-account)
 
-1. Create the Denver sub-account workflow with an **Inbound Webhook** trigger.
+1. Create the Las Vegas sub-account workflow with an **Inbound Webhook** trigger.
 2. **Prime the webhook before saving it** — GHL inbound webhooks must receive a test POST containing *every field you'll ever want to map*. Run this curl with the real webhook URL:
 
    ```bash
@@ -68,26 +68,26 @@ Put the webhook in `.dev.vars` (gitignored) for local Worker runs — see
      -d '{
        "first_name": "Test",
        "last_name": "Lead",
-       "phone": "+13035550100",
+       "phone": "+17025550100",
        "email": "test@example.com",
        "service_type": "Mobile notary — general documents",
-       "zip": "80211",
+       "zip": "89101",
        "documents": "Priming payload — includes every field the site sends",
        "utm_source": "google",
        "utm_medium": "cpc",
-       "utm_campaign": "denver-mobile-notary",
-       "utm_term": "mobile notary denver",
+       "utm_campaign": "las-vegas-mobile-notary",
+       "utm_term": "mobile notary las vegas",
        "utm_content": "ad-variant-a",
        "gclid": "TEST_GCLID",
-       "landing_page": "/service-areas/aurora/?utm_source=google",
+       "landing_page": "/service-areas/henderson/?utm_source=google",
        "referrer": "https://www.google.com/",
-       "source_site": "denvermobilenotaryservice.com",
-       "brand": "Denver Mobile Notary Service",
+       "source_site": "lasvegasmobilenotaryservices.com",
+       "brand": "Las Vegas Mobile Notary Services",
        "submitted_at": "2026-07-08T12:00:00.000Z",
        "ip_country": "US"
      }'
    ```
-3. Map fields in the workflow (contact create/update, tag `denver-web-lead`, tag by `service_type`), then mirror the NotaryPro→CloseClear branch logic: RON vs. in-person routing, POST to CloseClear `receive_lead.asp`, store the 200 response on the contact.
+3. Map fields in the workflow (contact create/update, tag `las-vegas-web-lead`, tag by `service_type`), then mirror the NotaryPro→CloseClear branch logic: RON vs. in-person routing, POST to CloseClear `receive_lead.asp`, store the 200 response on the contact.
 4. Set `GHL_WEBHOOK_URL` in Cloudflare Pages env vars and redeploy. Submit the live form once end-to-end and confirm the contact lands with all attribution fields.
 
 ## Conversion tracking
@@ -98,21 +98,21 @@ Put the webhook in `.dev.vars` (gitignored) for local Worker runs — see
 
 ## Before launch checklist
 
-- [ ] **Replace the placeholder phone number** — `(720) 555-0134` / `+17205550134` in `src/_data/site.json` (single source; header, footer, CTAs, and schema all pull from it)
+- [ ] **Replace the placeholder phone number** — `(702) 555-0134` / `+17025550134` in `src/_data/site.json` (single source; header, footer, CTAs, and schema all pull from it)
 - [ ] Replace placeholder email in `site.json`
-- [ ] Register **Denver Mobile Notary Service** DBA in Colorado (Stripe statement descriptor compliance, same as Austin)
-- [ ] Connect the Denver Stripe account to the Denver GHL sub-account (isolated ledger for the brand experiment)
+- [ ] Register **Las Vegas Mobile Notary Services** DBA in Nevada (Stripe statement descriptor compliance, same as Austin)
+- [ ] Connect the Las Vegas Stripe account to the Las Vegas GHL sub-account (isolated ledger for the brand experiment)
 - [ ] Prime + wire the GHL inbound webhook (above), set `GHL_WEBHOOK_URL`
 - [ ] Run homepage, one service page, and one area page through the Rich Results Test before assuming the schema pattern holds
 - [ ] Verify `/sitemap.xml` renders and submit in Search Console; verify domain property
-- [ ] Create the Denver Google Business Profile
-- [ ] Wire gtag + conversion label when the Denver campaign spins up
+- [ ] Create the Las Vegas Google Business Profile
+- [ ] Wire gtag + conversion label when the Las Vegas campaign spins up
 
 ## Content conventions
 
-Follows the NotaryPro content skill: direct, mechanics-grounded voice; honest fee ranges anchored to Colorado's $15/$25 caps; "what it can't do" sections on every service; no pre-signing note in consumer instructions; area pages differentiated by genuine local demand patterns (Anschutz bedside work in Aurora, Federal Center in Lakewood, estate corridor in Littleton, etc.) — not token-swapped templates, per the scaled-content policy risk.
+Follows the NotaryPro content skill: direct, mechanics-grounded voice; honest fee ranges anchored to Nevada's $15/$25 caps; "what it can't do" sections on every service; no pre-signing note in consumer instructions; area pages differentiated by genuine local demand patterns (St. Rose bedside and Sun City estate work in Henderson, VA hospital and Nellis military paperwork in North Las Vegas, UMC trauma and Strip shift-work in Paradise, apostille/international demand in Spring Valley, etc.) — not token-swapped templates, per the scaled-content policy risk. The Las Vegas metro is entirely **Clark County**, so there are no multi-county caveats.
 
-Adding an area page: drop a `.md` in `src/areas/` using `layouts/area.njk` frontmatter (see `aurora.md`); it auto-joins the footer, homepage chips, hub page, nearby-areas cross-links, and sitemap.
+Adding an area page: drop a `.md` in `src/areas/` using `layouts/area.njk` frontmatter (see `henderson.md`); it auto-joins the footer, homepage chips, hub page, nearby-areas cross-links, and sitemap.
 
 Adding a service: drop a `.md` in `src/services/` with an `order` value; same auto-wiring.
 
@@ -130,7 +130,7 @@ Adding a service: drop a `.md` in `src/services/` with an `order` value; same au
 │   ├── js/lead.js             UTM capture + fetch submit + thank-you redirect
 │   ├── index.njk              homepage (hero + form, FAQPage schema)
 │   ├── services/  (5)         mobile-notary, RON, apostille, loan-signing, hospital-jail
-│   ├── areas/     (6)         aurora, lakewood, littleton, arvada, westminster, centennial
+│   ├── areas/     (6)         henderson, north-las-vegas, summerlin, paradise, spring-valley, enterprise
 │   ├── pricing.md, faq.md, services.njk, service-areas.njk, thank-you.njk, 404.md
 │   ├── sitemap.njk, robots.txt, _headers
 ```

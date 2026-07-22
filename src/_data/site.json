@@ -1,14 +1,14 @@
 {
-  "name": "Denver Mobile Notary Service",
-  "legalName": "Denver Mobile Notary Service, a DBA of NotaryPro LLC",
-  "url": "https://denvermobilenotaryservice.com",
-  "phone": "(720) 555-0134",
-  "phoneHref": "+17205550134",
-  "email": "book@denvermobilenotaryservice.com",
+  "name": "Las Vegas Mobile Notary Services",
+  "legalName": "Las Vegas Mobile Notary Services, a DBA of NotaryPro LLC",
+  "url": "https://lasvegasmobilenotaryservices.com",
+  "phone": "(702) 555-0134",
+  "phoneHref": "+17025550134",
+  "email": "book@lasvegasmobilenotaryservices.com",
   "hours": "7:00 AM – 9:00 PM, 7 days a week",
   "priceRange": "$$",
-  "geo": { "lat": 39.7392, "lng": -104.9903 },
-  "address": { "locality": "Denver", "region": "CO", "country": "US" },
+  "geo": { "lat": 36.1699, "lng": -115.1398 },
+  "address": { "locality": "Las Vegas", "region": "NV", "country": "US" },
   "fees": {
     "perActInPerson": 15,
     "perActRon": 25,
@@ -18,8 +18,8 @@
   "gtagId": "{{GTAG_ID}}",
   "gtagConversionLabel": "{{GTAG_CONVERSION_LABEL}}",
   "serviceAreas": [
-    "Denver", "Aurora", "Lakewood", "Arvada", "Westminster", "Thornton",
-    "Centennial", "Littleton", "Highlands Ranch", "Englewood", "Wheat Ridge",
-    "Commerce City", "Broomfield", "Parker", "Golden"
+    "Las Vegas", "Henderson", "North Las Vegas", "Summerlin", "Paradise",
+    "Spring Valley", "Enterprise", "Sunrise Manor", "Green Valley", "Anthem",
+    "Centennial Hills", "Boulder City", "Whitney", "Winchester", "Mountain's Edge"
   ]
 }

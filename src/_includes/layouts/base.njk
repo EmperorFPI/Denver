@@ -29,10 +29,10 @@
     "url": "{{ site.url }}/",
     "telephone": "{{ site.phoneHref }}",
     "email": "{{ site.email }}",
-    "description": "Mobile notary public serving the Denver metro. A commissioned Colorado notary travels to your home, office, hospital, or care facility. Remote online notarization and apostille assistance available.",
+    "description": "Mobile notary public serving the Las Vegas metro. A commissioned Nevada notary travels to your home, office, hospital, or care facility. Remote online notarization and apostille assistance available.",
     "areaServed": [
       {%- for city in site.serviceAreas %}
-      { "@type": "City", "name": "{{ city }}", "containedInPlace": { "@type": "State", "name": "Colorado" } }{% if not loop.last %},{% endif %}
+      { "@type": "City", "name": "{{ city }}", "containedInPlace": { "@type": "State", "name": "Nevada" } }{% if not loop.last %},{% endif %}
       {%- endfor %}
     ],
     "address": {
@@ -65,7 +65,7 @@
     <div class="container header-inner">
       <a class="brand" href="/">
         <svg class="brand-seal" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="20" r="13" fill="none" stroke="currentColor" stroke-width="1"/><path d="M20 10l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9z" fill="currentColor"/></svg>
-        <span class="brand-text"><strong>Denver</strong> Mobile Notary Service</span>
+        <span class="brand-text"><strong>Las Vegas</strong> Mobile Notary Services</span>
       </a>
       <nav class="site-nav" aria-label="Primary">
         <a href="/services/">Services</a>
@@ -85,7 +85,7 @@
     <div class="container cta-band-inner">
       <div>
         <h2>Need a document notarized today?</h2>
-        <p>A commissioned Colorado notary comes to you — home, office, hospital, or anywhere in the Denver metro. {{ site.hours }}.</p>
+        <p>A commissioned Nevada notary comes to you — home, office, hospital, or anywhere in the Las Vegas metro. {{ site.hours }}.</p>
       </div>
       <div class="cta-band-actions">
         <a class="btn btn-gold" href="tel:{{ site.phoneHref }}">Call {{ site.phone }}</a>
@@ -98,7 +98,7 @@
     <div class="container footer-grid">
       <div>
         <p class="footer-brand">{{ site.name }}</p>
-        <p>Mobile notary dispatch for the Denver metro. Every appointment is handled by a commissioned, background-screened Colorado notary public.</p>
+        <p>Mobile notary dispatch for the Las Vegas metro. Every appointment is handled by a commissioned, background-screened Nevada notary public.</p>
         <p><a href="tel:{{ site.phoneHref }}">{{ site.phone }}</a><br><a href="mailto:{{ site.email }}">{{ site.email }}</a><br>{{ site.hours }}</p>
       </div>
       <div>
@@ -123,10 +123,10 @@
       <div>
         <p class="footer-heading">Good to know</p>
         <ul>
-          <li><a href="/pricing/">Pricing &amp; Colorado fee caps</a></li>
+          <li><a href="/pricing/">Pricing &amp; Nevada fee caps</a></li>
           <li><a href="/faq/">Frequently asked questions</a></li>
         </ul>
-        <p class="footer-fineprint">Colorado caps the notarial act fee at ${{ site.fees.perActInPerson }} per document in person and ${{ site.fees.perActRon }} for remote online notarization. Travel is billed separately and quoted before we book. We are not attorneys and cannot give legal advice. Do not sign documents before your appointment — signatures generally must be made in the notary's presence.</p>
+        <p class="footer-fineprint">Nevada caps the notarial act fee at ${{ site.fees.perActInPerson }} per signature in person and ${{ site.fees.perActRon }} for remote online notarization. Travel is billed separately and quoted before we book. We are not attorneys and cannot give legal advice. Do not sign documents before your appointment — signatures generally must be made in the notary's presence.</p>
         <p class="footer-fineprint">© {% year %} {{ site.legalName }}. All rights reserved.</p>
       </div>
     </div>

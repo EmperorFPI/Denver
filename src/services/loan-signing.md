@@ -1,9 +1,9 @@
 ---
 layout: layouts/service.njk
-title: "Loan Signing Agent Denver | Mobile Notary for Real Estate Closings"
+title: "Loan Signing Agent Las Vegas | Mobile Notary for Real Estate Closings"
 short_title: "Loan Signing"
-h1: "Loan Signing Services in Denver"
-description: "Signing-experienced mobile notaries for refinances, purchases, HELOCs, and seller packages across the Denver metro. Evenings and weekends available."
+h1: "Loan Signing Services in Las Vegas"
+description: "Signing-experienced mobile notaries for refinances, purchases, HELOCs, and seller packages across the Las Vegas valley. Evenings and weekends available."
 lede: "A 150-page loan package is not the place for a notary's first rodeo."
 service_name: "Loan Signing Agent"
 service_type: "Loan Signing Service"
@@ -47,4 +47,4 @@ A signing agent presents documents; they don't explain loan terms. If a signer a
 
 ## Pricing and turnaround
 
-Loan signings are quoted as a **flat package price** — typically covering travel, printing where needed, the full appointment, and same-day document return. Colorado's per-act cap applies to each notarization inside the package; the flat fee covers everything around them, itemized in writing per Colorado's disclosure rules. Title-ordered signings are billed to the title company; borrower-arranged signings are quoted and paid before the appointment, like everything we do.
+Loan signings are quoted as a **flat package price** — typically covering travel, printing where needed, the full appointment, and same-day document return. Nevada's per-signature cap applies to each notarization inside the package; the flat fee covers everything around them, itemized in writing per Nevada's disclosure rules. Title-ordered signings are billed to the title company; borrower-arranged signings are quoted and paid before the appointment, like everything we do.

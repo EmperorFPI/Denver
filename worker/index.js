@@ -12,6 +12,6 @@ import { createFetchHandler } from "notary-lead-form/worker";
  * (`wrangler secret put GHL_WEBHOOK_URL`) and never ships to the browser.
  */
 export default createFetchHandler({
-  brand: "Denver Mobile Notary Service",
-  sourceSite: "denvermobilenotaryservice.com",
+  brand: "Las Vegas Mobile Notary Services",
+  sourceSite: "lasvegasmobilenotaryservices.com",
 });
