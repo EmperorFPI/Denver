@@ -6,7 +6,7 @@ export default function (eleventyConfig) {
   // Everything site-specific lives here, so this config is the only thing a
   // new city site needs to change.
   eleventyConfig.addPlugin(leadForm, {
-    zipPlaceholder: "80211",
+    zipPlaceholder: "89101",
     phone: site.phone,
     phoneHref: site.phoneHref,
     trust:

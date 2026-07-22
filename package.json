@@ -1,7 +1,7 @@
 {
-  "name": "denvermobilenotaryservice",
+  "name": "lasvegasmobilenotaryservices",
   "version": "1.0.0",
-  "description": "Lead-gen static site for denvermobilenotaryservice.com — Eleventy 3.x on Cloudflare Pages, GHL-integrated.",
+  "description": "Lead-gen static site for lasvegasmobilenotaryservices.com — Eleventy 3.x on Cloudflare Pages, GHL-integrated.",
   "type": "module",
   "scripts": {
     "build": "eleventy",
