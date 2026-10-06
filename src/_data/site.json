@@ -15,7 +15,7 @@
     "typicalVisitLow": 45,
     "typicalVisitHigh": 95
   },
-  "turnstileSiteKey": "",
+  "turnstileSiteKey": "0x4AAAAAAFPVMRmplPdY-VbL",
   "gtagId": "{{GTAG_ID}}",
   "gtagConversionLabel": "{{GTAG_CONVERSION_LABEL}}",
   "serviceAreas": [
